@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import heroKaaba from "@/assets/hero-kaaba.jpg";
+import heroVideo from "@/assets/hero-omra.mp4.asset.json";
 import iwan from "@/assets/iwan.jpg";
 import portrait from "@/assets/portrait.jpg";
 
@@ -132,12 +133,16 @@ function Index() {
       {/* HERO */}
       <section className="relative">
         <div className="relative h-[78vh] min-h-[560px] overflow-hidden">
-          <img
-            src={heroKaaba}
-            alt="La Kaaba à La Mecque à l'heure dorée, minarets illuminés"
-            width={1920}
-            height={1080}
+          <video
             className="absolute inset-0 h-full w-full object-cover"
+            src={heroVideo.url}
+            poster={heroKaaba}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Vidéo de la Kaaba à La Mecque entourée de pèlerins au crépuscule"
           />
           <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gold-light/30 to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gold-light/25 to-transparent" />
