@@ -86,9 +86,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [city, setCity] = useState(CITIES[0]);
-  const [month, setMonth] = useState(MONTHS[0]);
-  const [travelers, setTravelers] = useState(TRAVELERS[0]);
+  const [city, setCity] = useState<string>(CITIES[0]!);
+  const [month, setMonth] = useState<string>(MONTHS[0]!);
+  const [travelers, setTravelers] = useState<string>(TRAVELERS[0]!);
   const [searched, setSearched] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [devisSent, setDevisSent] = useState(false);
