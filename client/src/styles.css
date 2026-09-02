@@ -1,0 +1,205 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --font-display: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.937 0.022 88.5);
+  --foreground: oklch(0.251 0.045 166);
+  --card: oklch(0.965 0.014 88);
+  --card-foreground: oklch(0.251 0.045 166);
+  --popover: oklch(0.965 0.014 88);
+  --popover-foreground: oklch(0.251 0.045 166);
+  --primary: oklch(0.303 0.05 166);
+  --primary-foreground: oklch(0.965 0.014 88);
+  --primary-deep: oklch(0.241 0.043 166);
+  --secondary: oklch(0.91 0.02 85);
+  --secondary-foreground: oklch(0.303 0.05 166);
+  --muted: oklch(0.91 0.02 85);
+  --muted-foreground: oklch(0.5 0.026 160);
+  --accent: oklch(0.9 0.03 85);
+  --accent-foreground: oklch(0.303 0.05 166);
+  --gold: oklch(0.665 0.108 78);
+  --gold-light: oklch(0.806 0.108 85);
+  --cream: oklch(0.965 0.014 88);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.965 0.014 88);
+  --border: oklch(0.251 0.045 166 / 8%);
+  --input: oklch(0.251 0.045 166 / 15%);
+  --ring: oklch(0.665 0.108 78);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    width: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  [data-radix-popper-content-wrapper] {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.6s ease-out both;
+}
+
+@utility animate-rise-delayed {
+  animation: rise 0.6s ease-out 0.08s both;
+}
+
+@utility animate-rise-late {
+  animation: rise 0.6s ease-out 0.16s both;
+}
+
+@keyframes loader-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes loader-ring-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes loader-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-shimmer {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.15);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes loader-dots {
+  0%,
+  20% {
+    content: "";
+  }
+  40% {
+    content: ".";
+  }
+  60% {
+    content: "..";
+  }
+  80%,
+  100% {
+    content: "...";
+  }
+}
+
+.loader-glow {
+  animation: loader-glow-pulse 3s ease-in-out infinite;
+}
+
+.loader-ring-outer {
+  animation: loader-ring-pulse 2.4s ease-in-out infinite;
+}
+
+.loader-ring-inner {
+  animation: loader-ring-pulse 2.4s ease-in-out 0.4s infinite;
+}
+
+.loader-spin {
+  animation: loader-ring-spin 4s linear infinite;
+}
+
+.loader-bar-shimmer {
+  animation: loader-shimmer 1.6s ease-in-out infinite;
+}
+
+.loader-dots::after {
+  content: "";
+  animation: loader-dots 1.4s steps(1) infinite;
+}
